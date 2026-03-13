@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  slug: string;
+  coverImage?: any;
+  techStack: string[];
+}
+
+const { title, slug, coverImage, techStack } = Astro.props;
+---
+
+<article class="relative bg-surface rounded-xl overflow-hidden border border-white/5 hover:border-accent/40 transition-all duration-300 group flex flex-col h-full">
+  <div class="relative h-52 w-full overflow-hidden bg-base">
+    {coverImage ? (
+      typeof coverImage === 'string' ? (
+        <img
+          src={coverImage}
+          alt={title}
+          class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+        />
+      ) : (
+        <Image
+          src={coverImage}
+          alt={title}
+          width={800}
+          height={600}
+          class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+        />
+      )
+    ) : (
+      <div class="w-full h-full flex items-center justify-center">
+        <span class="font-mono text-xs text-accent/40 tracking-widest uppercase">No Preview</span>
+        <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent"></div>
+      </div>
+    )}
+    <div class="absolute inset-0 bg-gradient-to-t from-surface/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  </div>
+
+  <div class="p-6 flex flex-col flex-grow">
+    <h3 class="text-lg font-bold mb-4 text-primary group-hover:text-accent transition-colors duration-200 leading-snug">
+      <a href={`/work/${slug}`}>
+        <span class="absolute inset-0 z-10" aria-hidden="true"></span>
+        {title}
+      </a>
+    </h3>
+
+    <div class="mt-auto pt-2 flex flex-wrap gap-2">
+      {techStack.map((tech) => (
+        <span class="font-mono text-xs text-accent bg-accent/5 border border-accent/20 px-2 py-1 rounded-md tracking-wide">
+          {tech}
+        </span>
+      ))}
+    </div>
+  </div>
+</article>

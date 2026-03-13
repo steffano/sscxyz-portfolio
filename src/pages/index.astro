@@ -1,17 +1,115 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
 
+const workEntries = await getCollection('work');
+const experienceEntries = await getCollection('experience');
+console.log('Experience entries:', experienceEntries.length);
+
+// Sort experience by date (assuming entries are added in chronological order or we can sort by id if needed)
+// For now we just show them in the order they come from the filesystem.
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="sscxyz — creative technologist">
+  <!-- Hero Section -->
+  <section class="relative px-6 pt-28 pb-24 max-w-7xl mx-auto overflow-hidden">
+    <!-- ... (hero code) ... -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: linear-gradient(#bd08cdd2 1px, transparent 1px), linear-gradient(90deg, #bd08cdd2 1px, transparent 1px); background-size: 4rem 4rem;"></div>
+    <!-- Glow blob -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-5xl">
+      <p class="font-mono text-accent text-sm tracking-widest uppercase mb-6">Creative Technologist</p>
+      <h1 class="text-6xl md:text-8xl font-bold text-primary leading-tight tracking-tight mb-6">
+        Crafting <span class="text-accent">interactive</span> <span class="text-accent">visual</span> & <span class="text-accent">sound</span> experiences.
+      </h1>
+      <p class="text-lg text-secondary leading-relaxed max-w-2xl mb-10">
+        I build real-time generative visuals and interactive installations using <span class="text-primary font-medium">TouchDesigner</span> to merge code, light, and motion into living systems.
+      </p>
+      <div class="flex items-center gap-4">
+        <a href="#work" class="inline-flex items-center gap-2 bg-accent text-base font-semibold px-6 py-3 rounded-lg text-sm hover:bg-black active:scale-95 transition-all duration-150">
+          View Work
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+        </a>
+        <a href="#contact" class="inline-flex items-center text-sm text-secondary hover:text-primary gap-2 transition-colors duration-200">
+          Get in touch
+        </a>
+      </div>
+    </div>
+
+    <!-- Floating tech tags -->
+    <div class="absolute right-6 top-28 hidden lg:flex flex-col gap-3">
+      {['TouchDesigner', 'GLSL', 'WebGL', 'Three.js', 'openFrameworks', 'Cinema 4D'].map(tag => (
+        <span class="font-mono text-xs text-accent border border-accent/10 bg-accent/5 px-3 py-1.5 rounded-md">
+          {tag}
+        </span>
+      ))}
+    </div>
+  </section>
+
+  <!-- Work Grid Section -->
+  <section id="work" class="px-6 pb-24 max-w-7xl mx-auto">
+    <div class="flex items-baseline justify-between mb-10 border-b border-white/5 pb-6">
+      <h2 class="text-2xl font-bold text-primary">Selected Work</h2>
+      <span class="font-mono text-xs text-secondary/60 tracking-widest uppercase">{workEntries.length} project{workEntries.length !== 1 ? 's' : ''}</span>
+    </div>
+
+    {workEntries.length > 0 ? (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {workEntries.map((entry) => (
+          <ProjectCard
+            title={entry.data.title}
+            slug={entry.id}
+            coverImage={entry.data.coverImage}
+            techStack={entry.data.techStack ?? []}
+          />
+        ))}
+      </div>
+    ) : (
+      <div class="flex flex-col items-center justify-center py-24 text-center">
+        <p class="font-mono text-sm text-secondary/50 mb-2">// no projects yet</p>
+        <p class="text-secondary text-sm">Add your first project via the Keystatic CMS at <a href="/keystatic" class="text-accent hover:underline">/keystatic</a></p>
+      </div>
+    )}
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="px-6 pb-24 max-w-7xl mx-auto">
+    <div class="flex items-baseline justify-between mb-10 border-b border-white/5 pb-6">
+      <h2 class="text-2xl font-bold text-primary">Experience</h2>
+      <span class="font-mono text-xs text-secondary/60 tracking-widest uppercase">{experienceEntries.length} role{experienceEntries.length !== 1 ? 's' : ''}</span>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6">
+      {experienceEntries.length > 0 ? (
+        experienceEntries.reverse().map((entry) => (
+          <ExperienceCard
+            role={entry.data.role}
+            company={entry.data.company}
+            dateRange={entry.data.dateRange}
+            techStack={entry.data.techStack ?? []}
+          />
+        ))
+      ) : (
+        <p class="text-secondary text-sm font-mono">// no experience entries yet</p>
+      )}
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section id="contact" class="px-6 pb-24 max-w-7xl mx-auto">
+    <div class="relative bg-surface rounded-2xl border border-white/5 p-12 md:p-16 overflow-hidden text-center">
+      <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent pointer-events-none"></div>
+      <p class="font-mono text-accent text-xs tracking-widest uppercase mb-4">Let's Collaborate</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Have a project in mind?</h2>
+      <p class="text-secondary text-base max-w-md mx-auto mb-8">
+        I'm open to creative collaborations, freelance work, and full-time opportunities in interactive media.
+      </p>
+      <a href="mailto:hello@example.com" class="inline-flex items-center gap-2 border border-accent/30 text-accent hover:bg-accent/10 transition-colors duration-200 font-mono text-sm px-6 py-3 rounded-lg">
+        hello@example.com
+      </a>
+    </div>
+  </section>
+</BaseLayout>

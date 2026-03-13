@@ -1,0 +1,40 @@
+---
+interface Props {
+  role: string;
+  company: string;
+  dateRange: string;
+  techStack: string[];
+}
+
+const { role, company, dateRange, techStack } = Astro.props;
+---
+
+<div class="relative group p-6 rounded-2xl bg-surface border border-white/5 hover:border-accent/20 transition-all duration-300">
+  <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"></div>
+  
+  <div class="relative z-10">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+      <h3 class="text-xl font-bold text-primary group-hover:text-accent transition-colors duration-300">{role}</h3>
+      <span class="font-mono text-xs text-accent bg-accent/5 border border-accent/10 px-3 py-1 rounded-full">{dateRange}</span>
+    </div>
+
+    <div class="flex items-center gap-2 mb-6 text-secondary">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-accent/60">
+        <path fill-rule="evenodd" d="M4.878 4.34a2.25 2.25 0 014.244 0 2.25 2.25 0 014.244 0 2.25 2.25 0 014.244 0c.311.012.62.03.928.051a.75.75 0 01.693.746V16.5a.75.75 0 01-.75.75H2.25a.75.75 0 01-.75-.75V5.137a.75.75 0 01.693-.746c.308-.021.617-.039.928-.051zm1.622 1a.75.75 0 00-1.5 0v11.25c0 .414.336.75.75.75h14.25c.414 0 .75-.336.75-.75V5.34a.75.75 0 00-.75-.75h-14.25c-.414 0-.75.336-.75.75v11.25z" clip-rule="evenodd" />
+      </svg>
+      <span class="font-medium">{company}</span>
+    </div>
+
+    <div class="mb-6 prose prose-invert prose-sm text-secondary/80 max-w-none">
+      <slot />
+    </div>
+
+    <div class="flex flex-wrap gap-2">
+      {techStack.map(tech => (
+        <span class="font-mono text-[10px] text-secondary border border-white/5 bg-white/5 px-2 py-0.5 rounded uppercase tracking-wider">
+          {tech}
+        </span>
+      ))}
+    </div>
+  </div>
+</div>
