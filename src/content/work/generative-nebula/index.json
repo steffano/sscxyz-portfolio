@@ -1,5 +1,6 @@
 {
   "title": "Generative Nebula",
+  "category": "generative-art",
   "techStack": [
     "TouchDesigner",
     "GLSL"

@@ -25,6 +25,15 @@ export default config({
           fields.text({ label: 'Technology' }),
           { label: 'Tech Stack Tags', itemLabel: props => props.value }
         ),
+        category: fields.select({
+          label: 'Category',
+          options: [
+            { label: 'Motion Design & Campaigns', value: 'motion-design' },
+            { label: 'Live AV & Installations', value: 'live-av' },
+            { label: 'Generative Art', value: 'generative-art' },
+          ],
+          defaultValue: 'motion-design',
+        }),
         content: fields.mdx({ label: 'Content' }),
       },
     }),
