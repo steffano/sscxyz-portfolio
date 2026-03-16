@@ -5,12 +5,14 @@ const isProduction = process.env.NODE_ENV === 'production';
 export default config({
   storage: isProduction
     ? {
-        kind: 'github',
-        repo: 'YOUR_GITHUB_USERNAME/portfolio', // Replace with your exact GitHub username and repo name
+        kind: 'cloud',
       }
     : {
         kind: 'local',
       },
+  cloud: {
+    project: 'sscxyz/portfolio',
+  },
   collections: {
     work: collection({
       label: 'Work',
