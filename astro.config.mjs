@@ -7,6 +7,8 @@ import keystatic from '@keystatic/astro';
 import cloudflare from '@astrojs/cloudflare';
 import { fileURLToPath } from 'node:url';
 
+import mdx from '@astrojs/mdx';
+
 const isDev = process.argv.includes('dev');
 
 // https://astro.build/config
@@ -26,5 +28,5 @@ export default defineConfig({
     },
   },
 
-  integrations: [react(), keystatic()],
+  integrations: [react(), keystatic(), mdx()],
 });
