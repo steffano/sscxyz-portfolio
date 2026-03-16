@@ -1,0 +1,10 @@
+{
+  "title": "First Light",
+  "coverImage": "../../../assets/portfolio/first-light/coverImage.jpeg",
+  "techStack": [
+    "Touchdesigner",
+    "Audioreactive",
+    "3D"
+  ],
+  "category": "motion-design"
+}
