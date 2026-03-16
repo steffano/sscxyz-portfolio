@@ -17,8 +17,8 @@ html {
 
 /* Selection highlight */
 ::selection {
-    background-color: #00FFFF22;
-    color: #bd08cdd2;
+    background-color: #bd08cdd2;
+    color: white;
 }
 
 /* Scrollbar styling */
@@ -36,5 +36,5 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #00FFFF33;
+    background: #bd08cd33;
 }

@@ -7,6 +7,7 @@ const workCollection = defineCollection({
     title: z.string(),
     coverImage: image().optional().or(z.string().optional()),
     videoUrl: z.string().url().optional().nullable(),
+    category: z.enum(['motion-design', 'live-av', 'generative-art']),
     techStack: z.array(z.string()).default([]),
   }),
 });

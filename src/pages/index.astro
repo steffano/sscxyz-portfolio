@@ -23,15 +23,15 @@ console.log('Experience entries:', experienceEntries.length);
     <div class="relative z-10 max-w-5xl">
       <p class="font-mono text-accent text-sm tracking-widest uppercase mb-6">Creative Technologist</p>
       <h1 class="text-6xl md:text-8xl font-bold text-primary leading-tight tracking-tight mb-6">
-        Crafting <span class="text-accent">interactive</span> <span class="text-accent">visual</span> & <span class="text-accent">sound</span> experiences.
+        Engineering <span class="text-accent">rhythm-driven</span> visual systems and <span class="text-accent">interactive</span> installations.
       </h1>
-      <p class="text-lg text-secondary leading-relaxed max-w-2xl mb-10">
-        I build real-time generative visuals and interactive installations using <span class="text-primary font-medium">TouchDesigner</span> to merge code, light, and motion into living systems.
+      <p class="text-lg text-secondary leading-relaxed max-w-3xl mb-10">
+        I merge code, motion design, and real-time rendering using <span class="text-primary font-medium">TouchDesigner</span> and <span class="text-primary font-medium">After Effects</span> to build scalable visual campaigns for luxury nightlife and immersive live events.
       </p>
       <div class="flex items-center gap-4">
-        <a href="#work" class="inline-flex items-center gap-2 bg-accent text-base font-semibold px-6 py-3 rounded-lg text-sm hover:bg-black active:scale-95 transition-all duration-150">
+        <a href="#work" class="inline-flex items-center gap-2 bg-surface border border-white/10 text-primary font-semibold px-6 py-3 rounded-lg text-sm hover:bg-accent hover:text-white hover:border-accent active:scale-95 transition-all duration-200 group">
           View Work
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
         </a>
         <a href="#contact" class="inline-flex items-center text-sm text-secondary hover:text-primary gap-2 transition-colors duration-200">
           Get in touch
@@ -41,7 +41,7 @@ console.log('Experience entries:', experienceEntries.length);
 
     <!-- Floating tech tags -->
     <div class="absolute right-6 top-28 hidden lg:flex flex-col gap-3">
-      {['TouchDesigner', 'GLSL', 'WebGL', 'Three.js', 'openFrameworks', 'Cinema 4D'].map(tag => (
+      {['TouchDesigner', 'After Effects', 'GLSL', 'Cinema 4D', 'Premiere Pro'].map(tag => (
         <span class="font-mono text-xs text-accent border border-accent/10 bg-accent/5 px-3 py-1.5 rounded-md">
           {tag}
         </span>
@@ -49,22 +49,56 @@ console.log('Experience entries:', experienceEntries.length);
     </div>
   </section>
 
+  <!-- Showreel Section -->
+  <section class="px-6 pb-24 max-w-7xl mx-auto">
+    <div class="relative aspect-video w-full rounded-2xl overflow-hidden border border-white/10 bg-surface">
+      <div class="absolute inset-0 flex items-center justify-center bg-black/40 z-10">
+         <span class="font-mono text-sm text-white/60 uppercase tracking-widest">Showreel 2024 (60s)</span>
+      </div>
+      <div class="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-surface">
+      <div style="padding:56.25% 0 0 0;position:relative;">
+        <iframe 
+          src="https://player.vimeo.com/video/1173700788?h=13ced822f2&badge=0&autopause=0&player_id=0&app_id=58479&color=bd08cd" 
+          frameborder="0" 
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+          style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+          title="Planet Music"
+        ></iframe>
+      </div>
+    </div>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    </div>
+  </section>
+
   <!-- Work Grid Section -->
   <section id="work" class="px-6 pb-24 max-w-7xl mx-auto">
-    <div class="flex items-baseline justify-between mb-10 border-b border-white/5 pb-6">
-      <h2 class="text-2xl font-bold text-primary">Selected Work</h2>
-      <span class="font-mono text-xs text-secondary/60 tracking-widest uppercase">{workEntries.length} project{workEntries.length !== 1 ? 's' : ''}</span>
+    <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-10 border-b border-white/5 pb-6 gap-6">
+      <div>
+        <h2 class="text-2xl font-bold text-primary mb-2">Selected Work</h2>
+        <p class="text-sm text-secondary max-w-xl">
+          A collection of projects spanning technical code-driven systems to high-end visual campaigns.
+        </p>
+      </div>
+      
+      <div class="flex flex-wrap gap-2" id="filter-controls">
+        <button data-filter="all" class="filter-btn active font-mono text-xs px-4 py-2 rounded-full border border-white/10 hover:border-accent/40 transition-all">All</button>
+        <button data-filter="motion-design" class="filter-btn font-mono text-xs px-4 py-2 rounded-full border border-white/10 hover:border-accent/40 transition-all">Motion Design</button>
+        <button data-filter="live-av" class="filter-btn font-mono text-xs px-4 py-2 rounded-full border border-white/10 hover:border-accent/40 transition-all">Live AV</button>
+        <button data-filter="generative-art" class="filter-btn font-mono text-xs px-4 py-2 rounded-full border border-white/10 hover:border-accent/40 transition-all">Generative Art</button>
+      </div>
     </div>
 
     {workEntries.length > 0 ? (
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="work-grid">
         {workEntries.map((entry) => (
-          <ProjectCard
-            title={entry.data.title}
-            slug={entry.id}
-            coverImage={entry.data.coverImage}
-            techStack={entry.data.techStack ?? []}
-          />
+          <div class="project-item" data-category={entry.data.category}>
+            <ProjectCard
+              title={entry.data.title}
+              slug={entry.id}
+              coverImage={entry.data.coverImage}
+              techStack={entry.data.techStack ?? []}
+            />
+          </div>
         ))}
       </div>
     ) : (
@@ -107,9 +141,41 @@ console.log('Experience entries:', experienceEntries.length);
       <p class="text-secondary text-base max-w-md mx-auto mb-8">
         I'm open to creative collaborations, freelance work, and full-time opportunities in interactive media.
       </p>
-      <a href="mailto:hello@example.com" class="inline-flex items-center gap-2 border border-accent/30 text-accent hover:bg-accent/10 transition-colors duration-200 font-mono text-sm px-6 py-3 rounded-lg">
-        hello@example.com
+      <a href="mailto:email@steffanochavez.com" class="inline-flex items-center gap-2 border border-accent/30 text-accent hover:bg-accent/10 transition-colors duration-200 font-mono text-sm px-6 py-3 rounded-lg">
+        email@steffanochavez.com
       </a>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectItems = document.querySelectorAll('.project-item');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Update active state
+      filterButtons.forEach(b => b.classList.remove('active', 'border-accent', 'text-accent'));
+      btn.classList.add('active', 'border-accent', 'text-accent');
+
+      const filter = btn.getAttribute('data-filter');
+
+      projectItems.forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+          (item as HTMLElement).style.display = 'block';
+        } else {
+          (item as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Set initial active state for 'all'
+  document.querySelector('[data-filter="all"]')?.classList.add('border-accent', 'text-accent');
+</script>
+
+<style>
+  .filter-btn.active {
+    background: rgba(189, 8, 205, 0.05);
+  }
+</style>
