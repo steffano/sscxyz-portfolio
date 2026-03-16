@@ -1,0 +1,10 @@
+{
+  "title": "Planet Music",
+  "coverImage": "../../../assets/portfolio/planet-music/coverImage.png",
+  "videoUrl": "https://vimeo.com/1173700788/13ced822f2",
+  "techStack": [
+    "TouchDesigner",
+    "GLSL"
+  ],
+  "category": "generative-art"
+}
