@@ -113,18 +113,24 @@ console.log('Experience entries:', experienceEntries.length);
       </div>
     </div>
 
-    {portfolioEntries.length > 0 ? (
+    {portfolioEntries.length > 0 ?
+      (
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
-        {portfolioEntries.map((entry) => (
-          <div class="project-item" data-category={entry.data.category}>
-            <ProjectCard
-              title={entry.data.title}
-              slug={entry.id}
-              coverImage={entry.data.coverImage}
-              techStack={entry.data.techStack ?? []}
-            />
-          </div>
-        ))}
+        {portfolioEntries.map((entry) => {
+          // 1. Clean the slug here too so the link exactly matches our new dynamic route
+          const cleanSlug = entry.id.replace(/\/index$/, '');
+          
+          return (
+            <div class="project-item" data-category={entry.data.category}>
+              <ProjectCard
+                title={entry.data.title}
+                slug={cleanSlug}
+                coverImage={entry.data.coverImage}
+                techStack={entry.data.techStack ?? []}
+              />
+            </div>
+          );
+        })}
       </div>
     ) : (
       <div class="flex flex-col items-center justify-center py-24 text-center">
