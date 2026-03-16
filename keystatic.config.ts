@@ -1,9 +1,16 @@
 import { config, fields, collection } from '@keystatic/core';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 export default config({
-  storage: {
-    kind: 'local',
-  },
+  storage: isProduction
+    ? {
+        kind: 'github',
+        repo: 'YOUR_GITHUB_USERNAME/portfolio', // Replace with your exact GitHub username and repo name
+      }
+    : {
+        kind: 'local',
+      },
   collections: {
     work: collection({
       label: 'Work',
