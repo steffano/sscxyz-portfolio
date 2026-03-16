@@ -12,7 +12,7 @@ console.log('Experience entries:', experienceEntries.length);
 // For now we just show them in the order they come from the filesystem.
 ---
 
-<BaseLayout title="sscxyz — creative technologist">
+<BaseLayout title="sscxyz">
   <!-- Hero Section -->
   <section class="relative px-6 pt-28 pb-24 max-w-7xl mx-auto overflow-hidden">
     <!-- ... (hero code) ... -->
@@ -21,7 +21,6 @@ console.log('Experience entries:', experienceEntries.length);
     <div class="absolute top-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="relative z-10 max-w-5xl">
-      <p class="font-mono text-accent text-sm tracking-widest uppercase mb-6">Creative Technologist</p>
       <h1 class="text-6xl md:text-8xl font-bold text-primary leading-tight tracking-tight mb-6">
         Engineering <span class="text-accent">rhythm-driven</span> visual systems and <span class="text-accent">interactive</span> installations.
       </h1>
@@ -29,8 +28,8 @@ console.log('Experience entries:', experienceEntries.length);
         I merge code, motion design, and real-time rendering using <span class="text-primary font-medium">TouchDesigner</span> and <span class="text-primary font-medium">After Effects</span> to build scalable visual campaigns for luxury nightlife and immersive live events.
       </p>
       <div class="flex items-center gap-4">
-        <a href="#work" class="inline-flex items-center gap-2 bg-surface border border-white/10 text-primary font-semibold px-6 py-3 rounded-lg text-sm hover:bg-accent hover:text-white hover:border-accent active:scale-95 transition-all duration-200 group">
-          View Work
+        <a href="#portfolio" class="inline-flex items-center gap-2 bg-surface border border-white/10 text-primary font-semibold px-6 py-3 rounded-lg text-sm hover:bg-accent hover:text-white hover:border-accent active:scale-95 transition-all duration-200 group">
+          View Portfolio
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
         </a>
         <a href="#contact" class="inline-flex items-center text-sm text-secondary hover:text-primary gap-2 transition-colors duration-200">
@@ -100,7 +99,7 @@ console.log('Experience entries:', experienceEntries.length);
   <section id="work" class="px-6 pb-24 max-w-7xl mx-auto">
     <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-10 border-b border-white/5 pb-6 gap-6">
       <div>
-        <h2 class="text-2xl font-bold text-primary mb-2">Selected Work</h2>
+        <h2 class="text-2xl font-bold text-primary mb-2">Portfolio</h2>
         <p class="text-sm text-secondary max-w-xl">
           A collection of projects spanning technical code-driven systems to high-end visual campaigns.
         </p>
@@ -167,9 +166,19 @@ console.log('Experience entries:', experienceEntries.length);
       <p class="text-secondary text-base max-w-md mx-auto mb-8">
         I'm open to creative collaborations, freelance work, and full-time opportunities in interactive media.
       </p>
-      <a href="mailto:email@steffanochavez.com" class="inline-flex items-center gap-2 border border-accent/30 text-accent hover:bg-accent/10 transition-colors duration-200 font-mono text-sm px-6 py-3 rounded-lg">
-        email@steffanochavez.com
-      </a>
+      
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <a href="mailto:email@steffanochavez.com" class="inline-flex items-center justify-center gap-2 border border-accent/30 text-accent hover:bg-accent/10 transition-colors duration-200 font-mono text-sm px-6 py-3 rounded-lg w-full sm:w-auto">
+          email@steffanochavez.com
+        </a>
+        <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1fKoVJdxSBqvweqzPqrv-XASxMwjvqC9iEXdRecHW3Uf8t1RcWntWWGfK1oSqCDIqEPR6KK0Rl?gv=true" class="inline-flex items-center justify-center gap-2 border border-accent/30 text-accent hover:bg-accent/10 transition-colors duration-200 font-mono text-sm px-6 py-3 rounded-lg w-full sm:w-auto">
+          Schedule a Free Call
+        </a>
+        <a href="https://www.instagram.com/sscxyz.ig" class="inline-flex items-center justify-center gap-2 border border-accent/30 text-accent hover:bg-accent/10 transition-colors duration-200 font-mono text-sm px-6 py-3 rounded-lg w-full sm:w-auto">
+          follow me @sscxyz.ig
+        </a>
+      </div>
+
     </div>
   </section>
 </BaseLayout>
