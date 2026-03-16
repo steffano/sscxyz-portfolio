@@ -1,7 +1,7 @@
 {
-  "role": "Freelance Creative Technologist & Motion Designer",
-  "company": "Self-Employed",
+  "role": "Creative Technologist & Motion Designer",
+  "company": "Freelance",
   "dateRange": "2024 - Present",
-  "techStack": ["TouchDesigner", "After Effects", "Cinema 4D", "GLSL"],
-  "achievements": "Developing interactive visual systems and motion design campaigns for luxury hospitality and live events."
+  "techStack": ["TouchDesigner", "Python", "After Effects", "OSC/MIDI"],
+  "achievements": "• Design and engineer high-impact motion graphics and interactive visual systems using TouchDesigner and Python, directly aligning with experiential brand storytelling and nightlife aesthetics.\n• Develop dynamic, rhythm-driven edits synced to music and live event energy, optimizing real-time rendering architecture for high-frame-rate, in-venue environments.\n• Build scalable visual systems and reusable motion templates to support recurring events, seamlessly adapting creative assets across social media platforms and immersive physical installations.\n• Engineer custom hardware/software communication pipelines (OSC/MIDI) to bridge digital motion content with physical lighting and sensor controllers."
 }

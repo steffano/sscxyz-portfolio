@@ -1,7 +1,7 @@
 {
-  "role": "Full Stack Software Engineer",
-  "company": "Block, Inc.",
+  "role": "Full Stack Software Engineer & Risk Operations",
+  "company": "Block, Inc. (formerly Square)",
   "dateRange": "2016 - 2024",
-  "techStack": ["Java", "Go", "React", "AWS", "Infrastructure"],
-  "achievements": "Engineered scalable financial systems and full-stack solutions within the Square and Block ecosystem."
+  "techStack": ["Ruby on Rails", "Java", "Go", "SQL", "Protocol Buffers"],
+  "achievements": "• Managed multiple, highly complex technical projects simultaneously within a fast-paced, deadline-driven environment, ensuring absolute brand integrity and system stability for tens of millions of users.\n• Demonstrated highly disciplined file management, workflow structure, and collaborative communication, acting as a technical bridge between diverse engineering, support, and risk teams.\n• Progressed from front-line customer success and bilingual risk operations into software engineering, designing automated investigative tools and high-throughput chargeback data pipelines."
 }

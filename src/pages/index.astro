@@ -4,7 +4,7 @@ import ExperienceCard from '../components/ExperienceCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { getCollection } from 'astro:content';
 
-const workEntries = await getCollection('work');
+const portfolioEntries = await getCollection('portfolio');
 const experienceEntries = await getCollection('experience');
 console.log('Experience entries:', experienceEntries.length);
 
@@ -95,8 +95,8 @@ console.log('Experience entries:', experienceEntries.length);
     });
   </script>
 
-  <!-- Work Grid Section -->
-  <section id="work" class="px-6 pb-24 max-w-7xl mx-auto">
+  <!-- Portfolio Grid Section -->
+  <section id="portfolio" class="px-6 pb-24 max-w-7xl mx-auto">
     <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-10 border-b border-white/5 pb-6 gap-6">
       <div>
         <h2 class="text-2xl font-bold text-primary mb-2">Portfolio</h2>
@@ -113,9 +113,9 @@ console.log('Experience entries:', experienceEntries.length);
       </div>
     </div>
 
-    {workEntries.length > 0 ? (
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="work-grid">
-        {workEntries.map((entry) => (
+    {portfolioEntries.length > 0 ? (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+        {portfolioEntries.map((entry) => (
           <div class="project-item" data-category={entry.data.category}>
             <ProjectCard
               title={entry.data.title}
@@ -149,6 +149,7 @@ console.log('Experience entries:', experienceEntries.length);
             company={entry.data.company}
             dateRange={entry.data.dateRange}
             techStack={entry.data.techStack ?? []}
+            achievements={entry.data.achievements}
           />
         ))
       ) : (
@@ -161,7 +162,7 @@ console.log('Experience entries:', experienceEntries.length);
   <section id="contact" class="px-6 pb-24 max-w-7xl mx-auto">
     <div class="relative bg-surface rounded-2xl border border-white/5 p-12 md:p-16 overflow-hidden text-center">
       <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent pointer-events-none"></div>
-      <p class="font-mono text-accent text-xs tracking-widest uppercase mb-4">Let's Collaborate</p>
+      <p class="font-mono text-accent text-xs tracking-widest uppercase mb-4">Let's Connect</p>
       <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Have a project in mind?</h2>
       <p class="text-secondary text-base max-w-md mx-auto mb-8">
         I'm open to creative collaborations, freelance work, and full-time opportunities in interactive media.
