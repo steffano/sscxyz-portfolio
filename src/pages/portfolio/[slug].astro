@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+  const portfolioEntries = await getCollection('portfolio');
+  
+  return portfolioEntries.map(entry => {
+    // 1. Strip the trailing "/index" from the ID to create a clean URL slug
+    const cleanSlug = entry.id.replace(/\/index$/, '');
+    
+    return {
+      params: { slug: cleanSlug },
+      props: { entry, cleanSlug },
+    };
+  });
+}
+
+const { entry, cleanSlug } = Astro.props;
+const { title, category, techStack, coverImage, videoUrl } = entry.data;
+
+// 2. Fetch all MDX files
+const mdxFiles = import.meta.glob('../../content/portfolio/*/content.mdx');
+
+// 3. Construct the MDX path using our cleaned up slug (the folder name)
+const mdxPath = `../../content/portfolio/${cleanSlug}/content.mdx`;
+
+let Content = null;
+if (mdxFiles[mdxPath]) {
+  const mdxModule: any = await mdxFiles[mdxPath]();
+  Content = mdxModule.default;
+}
+---
+
+<BaseLayout title={title}>
+  <article class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <header class="mb-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">{title}</h1>
+      <p class="text-accent/80 uppercase tracking-widest text-sm font-mono mb-6">{category}</p>
+      
+      <div class="flex flex-wrap gap-2 mb-8">
+        {techStack.map((tech) => (
+          <span class="font-mono text-xs text-accent bg-accent/5 border border-accent/20 px-3 py-1.5 rounded-md tracking-wide">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </header>
+
+    {/* Render Cover Image if it exists */}
+    {coverImage && (
+      <div class="mb-12 rounded-xl overflow-hidden border border-white/5">
+        {typeof coverImage === 'string' ? (
+          <img src={coverImage} alt={title} class="w-full h-auto object-cover" />
+        ) : (
+          <Image src={coverImage} alt={title} width={1200} height={800} class="w-full h-auto object-cover" />
+        )}
+      </div>
+    )}
+
+    {/* Render the MDX Content Component */}
+    {Content && (
+      <div class="prose prose-invert max-w-none mb-12 text-primary/80">
+        <Content />
+      </div>
+    )}
+
+    {/* Render Video Link if it exists */}
+    {videoUrl && (
+      <div class="mt-8 pt-8 border-t border-white/10">
+        <a href={videoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-accent hover:text-primary transition-colors font-bold">
+          Watch Project Video &rarr;
+        </a>
+      </div>
+    )}
+  </article>
+</BaseLayout>
