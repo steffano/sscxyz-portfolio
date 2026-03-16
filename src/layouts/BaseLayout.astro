@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Chatbot from '../components/Chatbot';
+import GenerativeBackground from '../components/GenerativeBackground';
 
 interface Props {
   title?: string;
@@ -47,6 +48,7 @@ const { title = "TouchDesigner Portfolio", description = "Creative Technologist 
     </footer>
 
     <Chatbot client:load />
+    <GenerativeBackground client:load />
 
   </body>
 </html>
