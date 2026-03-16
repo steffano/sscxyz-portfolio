@@ -4,9 +4,10 @@ interface Props {
   company: string;
   dateRange: string;
   techStack: string[];
+  achievements?: string;
 }
 
-const { role, company, dateRange, techStack } = Astro.props;
+const { role, company, dateRange, techStack, achievements } = Astro.props;
 ---
 
 <div class="relative group p-6 rounded-2xl bg-surface border border-white/5 hover:border-accent/20 transition-all duration-300">
@@ -26,6 +27,11 @@ const { role, company, dateRange, techStack } = Astro.props;
     </div>
 
     <div class="mb-6 prose prose-invert prose-sm text-secondary/80 max-w-none">
+      {achievements && (
+        <div class="whitespace-pre-line">
+          {achievements}
+        </div>
+      )}
       <slot />
     </div>
 

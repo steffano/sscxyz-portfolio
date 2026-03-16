@@ -5,26 +5,26 @@ const isProduction = process.env.NODE_ENV === 'production';
 export default config({
   storage: isProduction
     ? {
-        kind: 'cloud',
-      }
+      kind: 'cloud',
+    }
     : {
-        kind: 'local',
-      },
+      kind: 'local',
+    },
   cloud: {
     project: 'sscxyz/portfolio',
   },
   collections: {
-    work: collection({
-      label: 'Work',
+    portfolio: collection({
+      label: 'Portfolio',
       slugField: 'title',
-      path: 'src/content/work/*/',
+      path: 'src/content/portfolio/*/',
       format: { data: 'json' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         coverImage: fields.image({
           label: 'Cover Image',
-          directory: 'src/assets/work',
-          publicPath: '../../assets/work',
+          directory: 'src/assets/portfolio',
+          publicPath: '../../../assets/portfolio',
         }),
         videoUrl: fields.url({
           label: 'Video URL',
