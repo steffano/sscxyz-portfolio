@@ -134,30 +134,6 @@ console.log('Experience entries:', experienceEntries.length);
     )}
   </section>
 
-  <!-- Experience Section -->
-  <section id="experience" class="px-6 pb-24 max-w-7xl mx-auto">
-    <div class="flex items-baseline justify-between mb-10 border-b border-white/5 pb-6">
-      <h2 class="text-2xl font-bold text-primary">Experience</h2>
-      <span class="font-mono text-xs text-secondary/60 tracking-widest uppercase">{experienceEntries.length} role{experienceEntries.length !== 1 ? 's' : ''}</span>
-    </div>
-
-    <div class="grid grid-cols-1 gap-6">
-      {experienceEntries.length > 0 ? (
-        experienceEntries.reverse().map((entry) => (
-          <ExperienceCard
-            role={entry.data.role}
-            company={entry.data.company}
-            dateRange={entry.data.dateRange}
-            techStack={entry.data.techStack ?? []}
-            achievements={entry.data.achievements}
-          />
-        ))
-      ) : (
-        <p class="text-secondary text-sm font-mono">// no experience entries yet</p>
-      )}
-    </div>
-  </section>
-
   <!-- CTA Banner -->
   <section id="contact" class="px-6 pb-24 max-w-7xl mx-auto">
     <div class="relative bg-surface rounded-2xl border border-white/5 p-12 md:p-16 overflow-hidden text-center">
@@ -182,6 +158,31 @@ console.log('Experience entries:', experienceEntries.length);
 
     </div>
   </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="px-6 pb-24 max-w-7xl mx-auto">
+    <div class="flex items-baseline justify-between mb-10 border-b border-white/5 pb-6">
+      <h2 class="text-2xl font-bold text-primary">Experience</h2>
+      <span class="font-mono text-xs text-secondary/60 tracking-widest uppercase">{experienceEntries.length} role{experienceEntries.length !== 1 ? 's' : ''}</span>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6">
+      {experienceEntries.length > 0 ? (
+        experienceEntries.reverse().map((entry) => (
+          <ExperienceCard
+            role={entry.data.role}
+            company={entry.data.company}
+            dateRange={entry.data.dateRange}
+            techStack={entry.data.techStack ?? []}
+            achievements={entry.data.achievements}
+          />
+        ))
+      ) : (
+        <p class="text-secondary text-sm font-mono">// no experience entries yet</p>
+      )}
+    </div>
+  </section>
+
 </BaseLayout>
 
 <script>
