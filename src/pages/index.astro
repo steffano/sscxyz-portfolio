@@ -178,7 +178,7 @@ console.log('Experience entries:', experienceEntries.length);
 
     <div class="grid grid-cols-1 gap-6">
       {experienceEntries.length > 0 ? (
-        experienceEntries.reverse().map((entry) => (
+        experienceEntries.map((entry) => (
           <ExperienceCard
             role={entry.data.role}
             company={entry.data.company}
