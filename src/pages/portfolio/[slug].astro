@@ -33,10 +33,47 @@ if (mdxFiles[mdxPath]) {
   const mdxModule: any = await mdxFiles[mdxPath]();
   Content = mdxModule.default;
 }
+
+// 4. Helper function to ensure video URLs are embeddable
+function getEmbedUrl(url: string | undefined | null) {
+  if (!url) return null;
+
+  // Catch if you accidentally pasted the full HTML embed code instead of a link
+  if (url.includes('<iframe')) {
+    const srcMatch = url.match(/src="([^"]+)"/);
+    if (srcMatch) return srcMatch[1];
+  }
+
+  // YouTube
+  if (url.includes('youtube.com/watch?v=')) {
+    return url.replace('watch?v=', 'embed/').split('&')[0];
+  }
+  if (url.includes('youtu.be/')) {
+    return url.replace('youtu.be/', 'youtube.com/embed/');
+  }
+
+  // Vimeo (Handles standard, unlisted hashes, and "manage" links)
+  if (url.includes('vimeo.com')) {
+    // If it's somehow already a perfect player link, just return it
+    if (url.includes('player.vimeo.com')) return url; 
+    
+    // Extract the Video ID and the optional Privacy Hash using regex
+    const match = url.match(/vimeo\.com\/(?:manage\/videos\/)?(\d+)(?:\/([a-zA-Z0-9]+))?/);
+    if (match) {
+      const videoId = match[1];
+      const hash = match[2];
+      return `https://player.vimeo.com/video/${videoId}${hash ? `?h=${hash}` : ''}`;
+    }
+  }
+
+  return url;
+}
+
+const embedUrl = getEmbedUrl(videoUrl);
 ---
 
 <BaseLayout title={title}>
-  <article class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+  <article class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8 relative z-10">
     <header class="mb-8">
       <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">{title}</h1>
       <p class="text-accent/80 uppercase tracking-widest text-sm font-mono mb-6">{category}</p>
@@ -50,9 +87,18 @@ if (mdxFiles[mdxPath]) {
       </div>
     </header>
 
-    {/* Render Cover Image if it exists */}
-    {coverImage && (
-      <div class="mb-12 rounded-xl overflow-hidden border border-white/5">
+    {/* Render Video if it exists, otherwise fallback to Cover Image */}
+    {embedUrl ? (
+      <div class="mb-12 aspect-video w-full rounded-2xl overflow-hidden border border-white/5 bg-surface shadow-2xl">
+        <iframe 
+          src={embedUrl} 
+          class="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen
+        ></iframe>
+      </div>
+    ) : coverImage && (
+      <div class="mb-12 rounded-xl overflow-hidden border border-white/5 bg-surface shadow-2xl">
         {typeof coverImage === 'string' ? (
           <img src={coverImage} alt={title} class="w-full h-auto object-cover" />
         ) : (
@@ -63,18 +109,10 @@ if (mdxFiles[mdxPath]) {
 
     {/* Render the MDX Content Component */}
     {Content && (
-      <div class="prose prose-invert max-w-none mb-12 text-primary/80">
+      <div class="prose prose-invert max-w-none mb-12 text-primary/80 prose-a:text-accent hover:prose-a:text-white prose-img:rounded-xl">
         <Content />
       </div>
     )}
-
-    {/* Render Video Link if it exists */}
-    {videoUrl && (
-      <div class="mt-8 pt-8 border-t border-white/10">
-        <a href={videoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-accent hover:text-primary transition-colors font-bold">
-          Watch Project Video &rarr;
-        </a>
-      </div>
-    )}
+    
   </article>
 </BaseLayout>
