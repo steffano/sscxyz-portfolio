@@ -1,5 +1,7 @@
 {
   "title": "Generative Art Highlight Reel",
+  "coverImage": "../../../assets/portfolio/generative-art-highlight-reel/coverImage.jpg",
+  "videoUrl": "https://vimeo.com/1174245433/4223b0a5fc?share=copy&fl=sv&fe=ci",
   "techStack": [
     "Touchdesigner",
     "GLSL",
