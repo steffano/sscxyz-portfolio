@@ -72,7 +72,10 @@ function getEmbedUrl(url: string | undefined | null) {
 const embedUrl = getEmbedUrl(videoUrl);
 ---
 
-<BaseLayout title={title}>
+<BaseLayout 
+  title={title}
+  image={typeof coverImage === 'string' ? coverImage : coverImage?.src}
+>
   <article class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8 relative z-10">
     <header class="mb-8">
       <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">{title}</h1>
@@ -87,8 +90,8 @@ const embedUrl = getEmbedUrl(videoUrl);
       </div>
     </header>
 
-    {/* Render Video if it exists, otherwise fallback to Cover Image */}
-    {embedUrl ? (
+    {/* Render Video if it exists */}
+    {embedUrl && (
       <div class="mb-12 aspect-video w-full rounded-2xl overflow-hidden border border-white/5 bg-surface shadow-2xl">
         <iframe 
           src={embedUrl} 
@@ -97,8 +100,11 @@ const embedUrl = getEmbedUrl(videoUrl);
           allowfullscreen
         ></iframe>
       </div>
-    ) : coverImage && (
-      <div class="mb-12 rounded-xl overflow-hidden border border-white/5 bg-surface shadow-2xl">
+    )}
+
+    {/* Render Cover Image: Visible if no video, hidden if video exists */}
+    {coverImage && (
+      <div class={`mb-12 rounded-xl overflow-hidden border border-white/5 bg-surface shadow-2xl ${embedUrl ? 'hidden' : ''}`}>
         {typeof coverImage === 'string' ? (
           <img src={coverImage} alt={title} class="w-full h-auto object-cover" />
         ) : (
