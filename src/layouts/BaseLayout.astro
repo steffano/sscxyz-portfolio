@@ -6,9 +6,10 @@ import GenerativeBackground from '../components/GenerativeBackground';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
-const { title = "TouchDesigner Portfolio", description = "Creative Technologist specializing in TouchDesigner and WebGL" } = Astro.props;
+const { title = "TouchDesigner Portfolio", description = "Creative Technologist specializing in TouchDesigner and WebGL", image = "/coverImage.jpeg"} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ const { title = "TouchDesigner Portfolio", description = "Creative Technologist 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <title>{title ? `${title} - creative technologist` : "sscxyz"}</title>
+    <title>{title ? `sscxyz - ${title}` : "sscxyz -creative technologist"}</title>
   </head>
   <body class="bg-base text-primary font-sans antialiased min-h-screen flex flex-col selection:bg-accent/20 selection:text-accent">
     <header class="sticky top-0 z-50 py-4 px-4 sm:px-8 flex justify-between items-center border-b border-white/5 backdrop-blur-md bg-base/80">
