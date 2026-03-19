@@ -24,24 +24,26 @@ const { title = "TouchDesigner Portfolio", description = "Creative Technologist 
     <title>{title ? `sscxyz - ${title}` : "sscxyz -creative technologist"}</title>
   </head>
   <body class="bg-base text-primary font-sans antialiased min-h-screen flex flex-col selection:bg-accent/20 selection:text-accent">
-    <header class="sticky top-0 z-50 py-4 px-4 sm:px-8 flex justify-between items-center border-b border-white/5 backdrop-blur-md bg-base/80">
-      <div class="text-base font-semibold tracking-tight shrink-0">
+    <header class="sticky top-0 z-50 py-4 px-4 sm:px-8 grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4 border-b border-white/5 backdrop-blur-md bg-base/80">
+      
+      <div class="text-base font-semibold tracking-tight truncate">
         <a href="/" class="text-primary hover:text-accent transition-colors duration-200">
           <span class="font-mono text-accent">sscxyz</span>.website
         </a>
       </div>
 
-      <a href="/" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:opacity-80 transition-opacity">
-        <img src="/favicons/mstile-310x310.png" alt="Home" class="h-10 w-auto rounded-full" />
+      <a href="/" class="flex justify-center hover:opacity-80 transition-opacity">
+        <img src="/favicons/mstile-310x310.png" alt="Home" class="h-8 sm:h-10 w-auto rounded-full" />
       </a>
 
-      <nav aria-label="Main navigation">
-        <ul class="flex items-center gap-3 sm:gap-8 text-[11px] sm:text-sm font-medium text-secondary">
+      <nav aria-label="Main navigation" class="flex justify-end">
+         <ul class="flex items-center gap-3 sm:gap-6 text-[11px] sm:text-sm font-medium text-secondary">
           <li><a href="#contact" class="hover:text-primary transition-colors duration-200">Connect</a></li>
           <li><a href="#portfolio" class="hover:text-primary transition-colors duration-200">Portfolio</a></li>
-          <li><a href="#experience" class="hover:text-primary transition-colors duration-200">Experience</a></li>
+          <li><a href="#experience" class="hidden sm:block hover:text-primary transition-colors duration-200">Experience</a></li>
         </ul>
       </nav>
+      
     </header>
 
     <main class="flex-grow w-full">
