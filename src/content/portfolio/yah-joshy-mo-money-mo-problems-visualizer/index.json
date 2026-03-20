@@ -2,6 +2,10 @@
   "title": "YahJoshy - Mo Money Mo Problems Visualizer",
   "coverImage": "../../../assets/portfolio/yah-joshy-mo-money-mo-problems-visualizer/coverImage.jpg",
   "videoUrl": "https://vimeo.com/1174485054/cb0ff10251?share=copy&fl=sv&fe=ci",
-  "techStack": [],
+  "techStack": [
+    "Touchdesigner",
+    "Audio Reactive",
+    "Visualizer"
+  ],
   "category": "motion-design"
 }
