@@ -2,6 +2,11 @@
   "title": "Robots Dance Too",
   "coverImage": "../../../assets/portfolio/robots-dance-too/coverImage.jpg",
   "videoUrl": "https://vimeo.com/1174491271/ba5cc93d4c?share=copy&fl=sv&fe=ci",
-  "techStack": [],
+  "techStack": [
+    "Touchdesigner",
+    "Mixed Media",
+    "Audio Reactive",
+    "Generative Art"
+  ],
   "category": "motion-design"
 }
