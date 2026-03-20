@@ -2,6 +2,9 @@
   "title": "Liquid Star",
   "coverImage": "../../../assets/portfolio/liquid-star/coverImage.jpg",
   "videoUrl": "https://vimeo.com/1174491273/ab6fb2ac4f?share=copy&fl=sv&fe=ci",
-  "techStack": [],
+  "techStack": [
+    "Touchdesigner",
+    "3D"
+  ],
   "category": "motion-design"
 }
