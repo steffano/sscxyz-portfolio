@@ -2,6 +2,11 @@
   "title": "Yah Joshy - Big Dog Visualizer",
   "coverImage": "../../../assets/portfolio/yah-joshy-big-dog-visualizer/coverImage.jpg",
   "videoUrl": "https://vimeo.com/1174485055/86c69e4bcf?share=copy&fl=sv&fe=ci",
-  "techStack": [],
+  "techStack": [
+    "Touchdesigner",
+    "Audio Reactive",
+    "Visualizer",
+    "Mixed Media"
+  ],
   "category": "motion-design"
 }
