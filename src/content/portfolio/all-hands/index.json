@@ -2,6 +2,11 @@
   "title": "All Hands",
   "coverImage": "../../../assets/portfolio/all-hands/coverImage.jpg",
   "videoUrl": "https://vimeo.com/1174485056/ae2af63d3d?share=copy&fl=sv&fe=ci",
-  "techStack": [],
+  "techStack": [
+    "Touchdesigner",
+    "Generative Art",
+    "Mixed Media",
+    "Particle Simulation"
+  ],
   "category": "generative-art"
 }
